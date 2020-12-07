@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/shape"
+    android:gravity="center">
+    <TextView
+        android:id="@+id/textevent"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#6428CF"
+        android:padding="2dp"
+        android:background="@drawable/shape"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text1event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="1.5dp"
+            android:text="Title"
+            android:textColor="#EA0707"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text2event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="1.2dp"
+            android:text="Description"
+            android:textColor="#000000" />
+        <TextView
+            android:id="@+id/setseen"
+            android:text="O"
+            android:textColor="#F6AA59"
+            android:textAlignment="textEnd"
+            android:paddingRight="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end" />
+    </LinearLayout>
+
+</LinearLayout>

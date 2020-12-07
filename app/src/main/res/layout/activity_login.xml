@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#444444"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="25dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="30dp"
+            android:text="REGISTER/LOGIN"
+            android:textColor="#9C27B0"
+            android:textSize="25dp" />
+
+        <EditText
+            android:id="@+id/et_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:hint="User Name"
+            android:textAlignment="center"
+            android:textColor="#ED583E"
+            android:textColorHint="#52afaa" />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textAlignment="center"
+            android:textColor="#6BB3FF"
+            android:textColorHint="#52afaa" />
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textAlignment="center"
+            android:textColor="#866BFF"
+            android:textColorHint="#52afaa" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="25dp">
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textAllCaps="false" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
