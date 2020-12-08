@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavadocGenerationManager">
-    <option name="OUTPUT_DIRECTORY" value="D:/Third Semester/Cs 251" />
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$" />
+    <option name="OPTION_SCOPE" value="package" />
     <option name="OTHER_OPTIONS" value="-encoding utf-8 -charset utf-8" />
     <option name="OPTION_INCLUDE_LIBS" value="true" />
   </component>
