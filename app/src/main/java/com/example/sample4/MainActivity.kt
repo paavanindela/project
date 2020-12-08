@@ -79,11 +79,53 @@ class MainActivity : AppCompatActivity() {
         val usr = findViewById(R.id.usrid) as TextView
         usr.setText(shared.sharedPreferences.getString(shared.Filename, "NONE").toString())
         Log.d("Flag", shared.sharedPreferences.getBoolean(shared.Data, false).toString())
+        val logout_btn = findViewById<Button>(R.id.btn_logout) as Button
+        logout_btn.setOnClickListener(View.OnClickListener {
+            logoutreq(shared.sharedPreferences.getString(shared.Filename, "NONE").toString())
+            shared.editor.putString(shared.Filename, "NONE")
+            shared.editor.putBoolean(shared.Data, false)
+            shared.editor.commit()
+            shared.firsttime()
+        })
         if(shared.sharedPreferences.getBoolean(shared.Data, false).equals(true))
             getClasses()
         else
             return
     }
+
+    private fun logoutreq(s:String) {
+        var obj = JSONObject()
+        try {
+            obj.put("username", s)
+        } catch (e: JSONException) {
+            Log.e("JSONERROR", e.toString())
+            e.printStackTrace()
+        }
+        val thread = Thread {
+            try {
+                val url = URL("http://paavankumar.pythonanywhere.com/logout_student")
+                val conn = url.openConnection() as HttpURLConnection
+                conn.requestMethod = "POST"
+                conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8")
+                conn.setRequestProperty("Accept", "application/json")
+                conn.doInput = true
+                Log.i("JSON", obj.toString())
+                val os = DataOutputStream(conn.outputStream)
+                //os.writeBytes(URLEncoder.encode(jsonParam.toString(), "UTF-8"));
+                os.writeBytes(obj.toString())
+                os.flush()
+                os.close()
+                Log.i("STATUS", conn.responseCode.toString())
+                Log.i("MSG", conn.responseMessage)
+                if (conn.responseCode.toString() == "200")
+                conn.disconnect()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+        thread.start()
+    }
+
     private fun getClasses() {
         list = findViewById(R.id.list1) as ListView
         getclass()
@@ -127,7 +169,7 @@ class MainActivity : AppCompatActivity() {
         }
         val thread = Thread {
             try {
-                val url = URL("http://localhost:3000/get_classes")
+                val url = URL("http://paavankumar.pythonanywhere.com/get_classes")
                 val conn = url.openConnection() as HttpURLConnection
                 conn.requestMethod = "POST"
                 conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8")
@@ -242,7 +284,7 @@ class MainActivity : AppCompatActivity() {
         }
         val thread = Thread {
             try {
-                val url = URL("http://localhost:3000/seen_notif")
+                val url = URL("http://paavankumar.pythonanywhere.com/seen_notif")
                 val conn = url.openConnection() as HttpURLConnection
                 conn.requestMethod = "POST"
                 conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8")
@@ -282,7 +324,7 @@ class MainActivity : AppCompatActivity() {
         }
         val thread = Thread {
             try {
-                val url = URL("http://localhost:3000/get_notifications")
+                val url = URL("http://paavankumar.pythonanywhere.com/get_notifications")
                 val conn = url.openConnection() as HttpURLConnection
                 conn.requestMethod = "POST"
                 conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8")
@@ -397,7 +439,7 @@ class MainActivity : AppCompatActivity() {
         }
         val thread = Thread {
             try {
-                val url = URL("http://localhost:3000/add_token")
+                val url = URL("http://paavankumar.pythonanywhere.com/add_token")
                 val conn = url.openConnection() as HttpURLConnection
                 conn.requestMethod = "POST"
                 conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8")
